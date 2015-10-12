@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var todo = require('./routes/todo');
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URL);
 
 
 var app = express();
