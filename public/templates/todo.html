@@ -1,0 +1,32 @@
+<div ng-controller="todo">
+  <h1>Todo App</h1>
+  <section id="main-content">
+    <div class="form-area well">
+      <form id="tasks-form">
+        <label for="task">Add your task here</label>
+        <input ng-model="task.description" autofocus="">
+        <label for="">Due Date:</label>
+        <input ng-model="task.dueDate" autofocus="">
+        <button class="btn btn-default" ng-click='submit(task)'>Submit</button>
+      </form>
+    </div>
+    <div id="todoList">
+      <table>
+        <tr class="well">
+          <th>Completed</th>
+          <th>Task</th>
+          <th>Due Date</th>
+          <th>Remove</th>
+        </tr>
+        <br></br>
+        <tr ng-class="task.status === true ? done : ' ' " ng-repeat="task in tasks track by $index">
+          <td><input type="checkbox" ng-checked="task.status" ng-model="status" ng-click="changeStatus(task)"></td>
+          <td>{{task.description}}</td>
+          <td>{{task.dueDate | date : format : short}}</td>
+          <td><button ng-click="deleteTask(task)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+          <br>
+        </tr>
+      </table>
+    </div>
+  </section>
+</div>
